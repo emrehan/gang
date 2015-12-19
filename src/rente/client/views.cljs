@@ -51,7 +51,7 @@
                                nil)}]]))
 
 (defn form-button [input]
-  [:input.form-button {:type "button" :value "➤" :on-click #(post-message! input)}])
+  [:input.form-button {:type "button" :value "  ➤  " :on-click #(post-message! input)}])
 
 (defn form []
   (let [input (r/atom "")]
@@ -87,7 +87,7 @@
 
 (defn main [data]
   [:div.app
-    [:header.header "gang"]
+    [:header.header "GANG"]
     [:div.main-container
       [gangs-component]
       [threads-component]

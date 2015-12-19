@@ -9,36 +9,46 @@ body {
 }
 
 .app {
-  display: flex;
-  flex-direction:column;
-  height: 100vh
+    display: flex;
+    flex-direction:column;
+    height: 100vh
 }
+
 .main-container {
     flex: 1 1 auto;
-    background: #D0D0D0;
     display: flex;
 }
 
 .header {
     flex: 0 0 auto;
     background: gray;
+    text-align: center;
+    background: #666;
+    font: 20px;
+    font-weight: 900;
+    color: white;
     height: 2em;
 }
 
 .gangs-component {
     flex: 1 1 0;
+    text-align: center;
     overflow: auto;
+    background: #CB8A73;
 }
 
 .threads-component {
     flex: 1 1 0;
+    text-align: center;
     overflow: auto;
+    background: #BB99DA;
 }
 
 .messages-component {
     flex: 2 2 0;
     display: flex;
     flex-direction: column;
+    background: #8ED1D1;
 }
 
 .messages {
