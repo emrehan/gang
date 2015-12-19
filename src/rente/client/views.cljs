@@ -40,7 +40,7 @@
 (defn form-input [value]
   (fn []
     [initial-focus-wrapper
-      [:input#form-input
+      [:input.form-input
         {:type "text"
          :value @value
          :placeholder "new message"
@@ -51,17 +51,17 @@
                                nil)}]]))
 
 (defn form-button [input]
-  [:input#form-button {:type "button" :value "➤" :on-click #(post-message! input)}])
+  [:input.form-button {:type "button" :value "➤" :on-click #(post-message! input)}])
 
 (defn form []
   (let [input (r/atom "")]
     (fn []
-      [:div#form
+      [:div.form
         [form-input input]
         [form-button input]])))
 
 (defn message-item [message]
-  [:div#message
+  [:li.message
    [:p (:content message)]])
 
 (defonce active-gang (r/atom nil))
@@ -73,23 +73,22 @@
 (defonce threads (r/atom (sorted-map)))
 
 (defn gangs-component []
-  [:div#gangs-component "gangs component"])
+  [:div.gangs-component "gangs component"])
 
 (defn threads-component []
-  [:div#threads-component "threads component"])
+  [:div.threads-component "threads component"])
 
 (defn messages-component [data]
-  [:div#messages-component 
-   [:div#messages 
-    [:ul#messages-li
-     (for [message @messages]
-       ^{:key (first message)} [message-item (second message)])]]
+  [:div.messages-component
+   [:ul.messages
+    (for [message @messages]
+      ^{:key (first message)} [message-item (second message)])]
    [form]])
 
 (defn main [data]
-  [:div
-    [:header#header "gang"]
-    [:div#main-container
+  [:div.app
+    [:header.header "gang"]
+    [:div.main-container
       [gangs-component]
       [threads-component]
       [messages-component data]]])
