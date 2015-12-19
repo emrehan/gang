@@ -29,7 +29,6 @@
   (event-msg-handler ev-msg))
 
 (let [packer (sente-transit/get-flexi-packer :edn)
-
       {:keys [chsk ch-recv send-fn state]}
       (sente/make-channel-socket! "/chsk" {:type :auto :packer packer})]
   (def chsk       chsk)
@@ -48,5 +47,7 @@
 (defn test-socket-event []
   (chsk-send! [:rente/testevent {:message "Hello socket Event!"}]))
 
-(defn post-message! [message]
-  (chsk-send! [:rente/testevent {:message (str "post-message: " message)}]))
+(defn post-message! [message callback]
+  (chsk-send! [:rente/testevent {:message (str "post-message: " message)}]
+              3000
+              callback))
