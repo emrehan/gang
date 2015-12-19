@@ -40,11 +40,12 @@
               :output-dir "dev-resources/public/js/out"}}}}
 
   :profiles {:dev-config {}
-
              :dev [:dev-config
                    {:dependencies [[org.clojure/tools.namespace "0.2.10"]
-                                   [figwheel "0.5.0-2"]]
-
+                                   [figwheel "0.5.0-2"]
+                                   [com.cemerick/piggieback "0.2.1"]
+                                   [org.clojure/tools.nrepl "0.2.10"]]
+                    :repl-options {:nrepl-middleware [cemerick.piggieback/wrap-cljs-repl]}
                     :plugins [[lein-figwheel "0.5.0-2"]
                               [lein-environ "1.0.1"]]
 

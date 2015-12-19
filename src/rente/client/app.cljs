@@ -6,9 +6,7 @@
 
 (defonce state (reagent/atom {:title "RENTE"
                               :messages []
-
                               :re-render-flip false}))
-
 
 (defmulti handle-event (fn [data [ev-id ev-data]] ev-id))
 
