@@ -2,11 +2,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    color: #212121
-}
-
-body {
-    font: 16px Helvetica, Arial; 
+    color: #212121;
+    font: 1.5rem Helvetica, Arial; 
 }
 
 .app {
@@ -23,14 +20,16 @@ body {
 .header {
     flex: 0 0 auto;
     text-align: center;
-    font: 40px;
     font-weight: 900;
-    height: 2em;
+    font-size: 2.5rem;
+    letter-spacing: 0.2rem;
+    height: 3rem;
     color: #FFFFFF;
     background: #536DFE;
 }
 
 .gangs-component {
+    font-size: 1.5rem;
     flex: 1 1 0;
     text-align: center;
     overflow: auto;
@@ -38,6 +37,7 @@ body {
 }
 
 .threads-component {
+    font-size: 1.5rem;
     flex: 1 1 0;
     text-align: center;
     overflow: auto;
@@ -48,24 +48,119 @@ body {
     flex: 2 2 0;
     display: flex;
     flex-direction: column;
-    background: #CFD8DC;
-}
-
-.messages {
-    flex: 1 1 0;
-    overflow: auto;
 }
 
 .form {
     flex: 0 0 auto;
-    height: 2em;
+    height: 3rem;
     display: flex;
 }
 
 input.form-input {
+    font-size: 1.5rem;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
     flex: 1 1 0;
 }
 
 input.form-button {
     flex: 0 0 auto;
+    color: #FFFFFF;
+    background: #536DFE;
+}
+
+
+/**/
+    /**/
+/**/    /**/
+    /**/    /**/
+/**/    /**/
+    /**/
+/**/
+
+
+.discussion {
+    list-style: none;
+    margin: 0;
+    padding: 0 5px 5px 5px;
+    flex: 1 1 0;
+    background: #CFD8DC;
+    overflow: auto;
+}
+
+.discussion li {
+    padding: 0.5rem;
+    overflow: hidden;
+    display: flex;
+}
+
+.discussion .avatar {
+    min-width: 40px;
+    max-width: 40px;
+    position: relative;
+}
+
+.discussion .avatar img {
+    display: block;
+    width: 100%;
+}
+
+.other .avatar:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    border: 5px solid white;
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+}
+
+.self {
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+.self .message {
+    order: 1;
+    border-bottom-right-radius: 0;
+}
+.self .avatar {
+    order: 2;
+}
+.self .avatar:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border: 5px solid white;
+    border-right-color: transparent;
+    border-top-color: transparent;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.message {
+    background: white;
+    padding: 10px;
+    border-radius: 2px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+.message p {
+    font-size: 1.5rem;
+    margin: 0 0 0.2rem 0;
+}
+.message time {
+    font-size: 0.7rem;
+    color: #ccc;
+}
+
+@keyframes pulse {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }

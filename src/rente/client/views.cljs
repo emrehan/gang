@@ -30,8 +30,7 @@
                       (update-message! edn-reply)))] ; edn reply contains the full message response + client-timestamp 
       (add-message! message)
       (socket/post-message! message callback))
-      (reset! value "")
-      (js/window.scrollTo 0 (.-scrollHeight (.-body js/document)))))
+      (reset! value "")))
 
 (def initial-focus-wrapper
   (with-meta identity
@@ -60,9 +59,23 @@
         [form-input input]
         [form-button input]])))
 
-(defn message-item [message]
-  [:li.message
-   [:p (:content message)]])
+(defn self-message-item [message]
+  [:li.self
+   [:div.avatar
+    [:img {:src "https://lh6.googleusercontent.com/-uNweYsvOk5M/AAAAAAAAAAI/AAAAAAAAA1s/cfG2h-9woZs/photo.jpg?sz=64"}]]
+   [:div.message 
+    [:p (:content message)]
+    [:time "Emrehan 10dk"]
+   ]])
+
+(defn other-message-item [message]
+  [:li.other
+   [:div.avatar
+    [:img {:src "https://lh6.googleusercontent.com/-uNweYsvOk5M/AAAAAAAAAAI/AAAAAAAAA1s/cfG2h-9woZs/photo.jpg?sz=64"}]]
+   [:div.message 
+    [:p (:content message)]
+    [:time "Emrehan 10dk"]
+   ]])
 
 (defonce active-gang (r/atom nil))
 
@@ -80,9 +93,9 @@
 
 (defn messages-component [data]
   [:div.messages-component
-   [:ul.messages
+   [:ul.discussion
     (for [message @messages]
-      ^{:key (first message)} [message-item (second message)])]
+      ^{:key (first message)} [other-message-item (second message)])]
    [form]])
 
 (defn main [data]
