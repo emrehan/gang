@@ -24,7 +24,6 @@
         message (new-message text)
         timestamp (:timestamp message)
         callback (fn [edn-reply]
-                  (println "edn-reply is " edn-reply)
                   (when-not (sente/cb-success? edn-reply) ; Checks for :chsk/closed, :chsk/timeout, :chsk/error
                     (update-message! edn-reply)))] ; edn reply contains the full message response + client-timestamp 
     (add-message! message)

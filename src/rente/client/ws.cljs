@@ -9,22 +9,22 @@
   (js/console.log "PUSHed :rente/testevent from server: %s " (pr-str event)))
 
 (defmulti event-msg-handler :id) ; Dispatch on event-id
+
+  (defmethod event-msg-handler :default ; Fallback
+      [{:as ev-msg :keys [event]}]
+      (js/console.log "Unhandled event: %s" (pr-str event)))
+
+  (defmethod event-msg-handler :chsk/state
+    [{:as ev-msg :keys [?data]}]
+    (if (= ?data {:first-open? true})
+      (js/console.log "Channel socket successfully established!")
+      (js/console.log "Channel socket state change: %s" (pr-str ?data))))
+
+  (defmethod event-msg-handler :chsk/recv
+    [{:as ev-msg :keys [?data]}]
+    (push-msg-handler ?data))
+
 ;; Wrap for logging, catching, etc.:
-
-(defmethod event-msg-handler :default ; Fallback
-    [{:as ev-msg :keys [event]}]
-    (js/console.log "Unhandled event: %s" (pr-str event)))
-
-(defmethod event-msg-handler :chsk/state
-  [{:as ev-msg :keys [?data]}]
-  (if (= ?data {:first-open? true})
-    (js/console.log "Channel socket successfully established!")
-    (js/console.log "Channel socket state change: %s" (pr-str ?data))))
-
-(defmethod event-msg-handler :chsk/recv
-  [{:as ev-msg :keys [?data]}]
-  (push-msg-handler ?data))
-
 (defn event-msg-handler* [{:as ev-msg :keys [id ?data event]}]
   (event-msg-handler ev-msg))
 
