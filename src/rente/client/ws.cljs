@@ -47,3 +47,6 @@
 
 (defn test-socket-event []
   (chsk-send! [:rente/testevent {:message "Hello socket Event!"}]))
+
+(defn post-message! [message]
+  (chsk-send! [:rente/testevent {:message (str "post-message: " message)}]))

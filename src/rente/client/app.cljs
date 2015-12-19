@@ -4,7 +4,7 @@
               [rente.client.views :as views]
               [rente.client.ws :as ws]))
 
-(defonce state (reagent/atom {:title "RENTE"
+(defonce state (reagent/atom {:title "GANG"
                               :messages []
                               :re-render-flip false}))
 

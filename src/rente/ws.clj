@@ -76,6 +76,3 @@
 
 (defn new-ws-connection []
   (map->WSConnection {}))
-
-
-
