@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    color: #212121
 }
 
 body {
@@ -21,34 +22,33 @@ body {
 
 .header {
     flex: 0 0 auto;
-    background: gray;
     text-align: center;
-    background: #666;
-    font: 20px;
+    font: 40px;
     font-weight: 900;
-    color: white;
     height: 2em;
+    color: #FFFFFF;
+    background: #536DFE;
 }
 
 .gangs-component {
     flex: 1 1 0;
     text-align: center;
     overflow: auto;
-    background: #CB8A73;
+    background: #455A64;
 }
 
 .threads-component {
     flex: 1 1 0;
     text-align: center;
     overflow: auto;
-    background: #BB99DA;
+    background: #607D8B;
 }
 
 .messages-component {
     flex: 2 2 0;
     display: flex;
     flex-direction: column;
-    background: #8ED1D1;
+    background: #CFD8DC;
 }
 
 .messages {
